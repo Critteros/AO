@@ -79,7 +79,7 @@ class CentralWidget(QtWidgets.QWidget):
         self.promptOrImage.text = img_path
         self.promptOrImage.setPixmap(self.imageMap)
 
-        self.resultText.setText(_(f"You have visited: {verdict[0]}\nCertainty: {verdict[1] * 100.0:.0f}%"))
+        self.resultText.setText(_(f"You have visited: {verdict[0]}\nCertainty: {verdict[1] * 100.0:.2f}%"))
         self.resultText.update()
 
         self.button.setText(_("Try another image"))
