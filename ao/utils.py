@@ -23,3 +23,4 @@ class ImageRecognizer:
         pred_score = np.round(max(pred), 2)
         pred_class = self.class_names[np.argmax(pred)]
         return pred_class, pred_score
+
