@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
     QFileDialog,
 )
 
-from .i18n import _
+from ._i18n import _
 from .utils import ImageRecognizer
 
 

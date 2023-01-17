@@ -1,10 +1,8 @@
 # Make a gui in pyqt6
 import sys
-from PySide6 import QtWidgets, QtGui
-from ao.widgets import *
+from ao.widgets import MainWindow
 
 from PySide6.QtWidgets import QApplication
-from .window import MainWindow
 
 import qtmodern.styles
 import qtmodern.windows

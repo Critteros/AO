@@ -5,9 +5,7 @@ import random
 from PySide6 import QtCore, QtWidgets, QtGui
 from ao.utils import ImageRecognizer
 
-
-
-project_path = "/home/bard/AO"  # Tylko na potrzeby testów, myślę o wrzuceniu do .env albo coś bo jak ../ dawałem to nie wykrywało
+from ._i18n import _
 
 
 def configureStyle(app):
@@ -16,7 +14,7 @@ def configureStyle(app):
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Rozpoznawanie krajobrazów - AO 2023 AGH")
+        self.setWindowTitle(_("Postcard from holidays"))
         self.centralWidget = CentralWidget()
 
         self.setCentralWidget(self.centralWidget)
@@ -36,7 +34,7 @@ class CentralWidget(QtWidgets.QWidget):
 
         print(os.getcwd())
         self.imageRecognizer = ImageRecognizer(
-            os.path.join(project_path, "Notebooks/LandscapeCNN.model")
+            os.path.join(os.path.dirname(__file__), "../LandscapeCNN.model")
         )
         self.imageBox = QtWidgets.QGroupBox(self)
 
@@ -49,9 +47,9 @@ class CentralWidget(QtWidgets.QWidget):
         self.imageBox.layout = imageLayout
         
         
-        self.button = QtWidgets.QPushButton("Load Image")
+        self.button = QtWidgets.QPushButton(_("Load Image"))
 
-        self.promptOrImage = QtWidgets.QLabel("Aby rozpocząć, załaduj obrazek", alignment=QtCore.Qt.AlignCenter)
+        self.promptOrImage = QtWidgets.QLabel(_("To begin, please load an image"), alignment=QtCore.Qt.AlignCenter)
 
         self.imageBox.layout.addWidget(self.promptOrImage, 0,0,alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
         self.imageBox.layout.addWidget(self.button,1,0,alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -61,8 +59,9 @@ class CentralWidget(QtWidgets.QWidget):
         self.resultBox.updateGeometry()
         self.resultBox.layout = QtWidgets.QGridLayout(self.resultBox)
 
+        resultFont = QtGui.QFont("Arial",25)
         self.resultText = QtWidgets.QLabel("", alignment=QtCore.Qt.AlignCenter)
-
+        self.resultText.setFont(resultFont)
         self.resultBox.layout.addWidget(self.resultText,0,0,alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
 
 
@@ -80,17 +79,21 @@ class CentralWidget(QtWidgets.QWidget):
         self.promptOrImage.text = img_path
         self.promptOrImage.setPixmap(self.imageMap)
 
-        self.resultText.setText(f"Wynik: {verdict[0]}\nPewność: {verdict[1] * 100}%")
+        self.resultText.setText(_(f"You have visited: {verdict[0]}\nCertainty: {verdict[1] * 100.0:.0f}%"))
         self.resultText.update()
+
+        self.button.setText(_("Try another image"))
+        self.resultBox.layout.addWidget(self.button,1,0,alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
 
         self.promptOrImage.updateGeometry()
 
     @QtCore.Slot()
     def loadAndAnalyse(self):
         try:
-            res = QtWidgets.QFileDialog.getOpenFileName(self,("Open Image"), "/home/bardel/ao/", ("Image Files (*.png *.jpg *.bmp)"))
+            res = QtWidgets.QFileDialog.getOpenFileName(self,_("Open Image"), "", ("Image Files (*.png *.jpg *.bmp *.jpeg)"))
             img_path = res[0]
             verdict = self.imageRecognizer.recognize(img_path)
+            print(verdict)
             #self.text.setText(f"Image: {img_path} is a {pred_class} for {score*100}%")
             self.viewImage(img_path, verdict)
         except:
