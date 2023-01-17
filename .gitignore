@@ -2,6 +2,6 @@ __pycache__
 .idea
 .vscode
 dataset/Landscape Classification
-Notebooks/LandscapeCNN.model
+LandscapeCNN.model
 *.zip
 .ipynb_checkpointsg
