@@ -3,11 +3,14 @@ import sys
 from PySide6 import QtWidgets, QtGui
 from ao.widgets import *
 
+from PySide6.QtWidgets import QApplication
+from .window import MainWindow
+
 import qtmodern.styles
 import qtmodern.windows
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
+    app = QApplication(sys.argv)
 
     qtmodern.styles.dark(app)
     
