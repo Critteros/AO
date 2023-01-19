@@ -1,6 +1,25 @@
 # Project for AO
 
-## Instalation:
+### Simple GUI application classifying images to 5 groups:
+* Forest
+* Desert
+* Glacier
+* Mountain
+* Coast
+
+## Installation:
+* Install requirements using:
+```
+pip install -r requirements.txt
+```
+* Download model from https://drive.google.com/drive/folders/1Rq7dmWzzOwnZQHjA3Lb1FVL6rGEEaOAI?usp=sharing and paste it into project folder
+* Run application using
+```
+python3 ao
+```
+
+
+## Installation for development:
 * have Win11 and WSL or Win10 and patience
 * install `PyCharm`
 * install `pyenv` from https://github.com/pyenv/pyenv#automatic-installer (Remember to paste commands to `.bashrc`)
