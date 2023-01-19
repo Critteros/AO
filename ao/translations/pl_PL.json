@@ -1,3 +1,13 @@
 {
-  "Postcard from holidays": "Pocztówka z wakacji"
+  "Postcard from holidays": "Pocztówka z wakacji",
+  "Load Image": "Załaduj zdjęcie",
+  "To begin, please load an image": "Załaduj pocztówkę do analizy",
+  "You have visited": "Odwiedziłeś",
+  "Certainty": "Pewność wyniku",
+  "Try another image": "Spróbuj inną pocztówkę",
+  "Desert": "Pustynia",
+  "Forest": "Las",
+  "Glacier": "Lodowiec",
+  "Coast": "Wybrzeże",
+  "Mountain": "Góry"
 }
