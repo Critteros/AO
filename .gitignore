@@ -5,3 +5,4 @@ dataset/Landscape Classification
 LandscapeCNN.model
 *.zip
 .ipynb_checkpointsg
+*.model
