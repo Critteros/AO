@@ -4,5 +4,5 @@ __pycache__
 dataset/Landscape Classification
 LandscapeCNN.model
 *.zip
-.ipynb_checkpointsg
+.ipynb_checkpoints
 *.model
