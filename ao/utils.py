@@ -20,6 +20,6 @@ class ImageRecognizer:
         img_array = img_to_array(img)
         img_batch = np.expand_dims(img_array, axis=0)
         pred = self.model.predict(img_batch)[0]
-        pred_score = np.round(max(pred), 2)
+        pred_score = np.round(max(pred), 4)
         pred_class = self.class_names[np.argmax(pred)]
         return pred_class, pred_score
